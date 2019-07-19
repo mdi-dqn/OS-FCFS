@@ -1,0 +1,24 @@
+inf = open("inf.txt","r")
+
+l1 = inf.readline()
+l2 = inf.readline()
+inp = l1.split()
+run = l2.split()
+
+InputTime = []
+RunningTime = []
+for i in inp:
+    InputTime.append(int(i))
+for i in run:
+    RunningTime.append(int(i))
+
+s,sum = 0,0
+for i in range(len(InputTime)):
+    sum = sum + (s-InputTime[i])
+    s = s + RunningTime[i]
+    if i<len(InputTime)-1 :
+        if s < InputTime[i+1]:
+            s = s + (InputTime[i+1] - s)
+
+print("Average response time = ",sum/len(InputTime))
+print("Average waiting  time = ",sum/len(InputTime))
